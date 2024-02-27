@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server-side DataTables</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": "http://localhost:8080", // URL to your server-side script
+                "paging": true,        // Disable pagination
+                // Define column definitions, etc.
+                "columns": [
+                    { "data": "first name" },
+                    { "data": "last name" },
+                    { "data": "email" },
+                    { "data": "occupation" }
+                    // Add more columns as needed
+                ]
+            });
+        });
+    </script>
+</head>
+<body>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Occupation</th>
+            </tr>
+        </thead>
+        <tbody>
+    <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+        <td>Engineer</td>
+    </tr>
+    <tr>
+        <td>Jane</td>
+        <td>Smith</td>
+        <td>jane@example.com</td>
+        <td>Designer</td>
+    </tr>
+    <tr>
+        <td>Michael</td>
+        <td>Johnson</td>
+        <td>michael@example.com</td>
+        <td>Developer</td>
+    </tr>
+    <tr>
+        <td>Emily</td>
+        <td>Brown</td>
+        <td>emily@example.com</td>
+        <td>Manager</td>
+    </tr>
+    <tr>
+        <td>David</td>
+        <td>Wilson</td>
+        <td>david@example.com</td>
+        <td>Analyst</td>
+    </tr>
+    <tr>
+        <td>Sarah</td>
+        <td>Miller</td>
+        <td>sarah@example.com</td>
+        <td>Consultant</td>
+    </tr>
+    <tr>
+        <td>James</td>
+        <td>Thompson</td>
+        <td>james@example.com</td>
+        <td>Marketing</td>
+    </tr>
+    <tr>
+        <td>Amy</td>
+        <td>Clark</td>
+        <td>amy@example.com</td>
+        <td>HR</td>
+    </tr>
+    <tr>
+        <td>Robert</td>
+        <td>White</td>
+        <td>robert@example.com</td>
+        <td>Writer</td>
+    </tr>
+    <tr>
+        <td>Michelle</td>
+        <td>Lee</td>
+        <td>michelle@example.com</td>
+        <td>Artist</td>
+    </tr>
+    <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+        <td>Engineer</td>
+    </tr>
+    <tr>
+        <td>Jane</td>
+        <td>Smith</td>
+        <td>jane@example.com</td>
+        <td>Designer</td>
+    </tr>
+    <tr>
+        <td>Michael</td>
+        <td>Johnson</td>
+        <td>michael@example.com</td>
+        <td>Developer</td>
+    </tr>
+    <tr>
+        <td>Emily</td>
+        <td>Brown</td>
+        <td>emily@example.com</td>
+        <td>Manager</td>
+    </tr>
+    <tr>
+        <td>David</td>
+        <td>Wilson</td>
+        <td>david@example.com</td>
+        <td>Analyst</td>
+    </tr>
+    <tr>
+        <td>Sarah</td>
+        <td>Miller</td>
+        <td>sarah@example.com</td>
+        <td>Consultant</td>
+    </tr>
+    <tr>
+        <td>James</td>
+        <td>Thompson</td>
+        <td>james@example.com</td>
+        <td>Marketing</td>
+    </tr>
+    <tr>
+        <td>Amy</td>
+        <td>Clark</td>
+        <td>amy@example.com</td>
+        <td>HR</td>
+    </tr>
+    <tr>
+        <td>Robert</td>
+        <td>White</td>
+        <td>robert@example.com</td>
+        <td>Writer</td>
+    </tr>
+    <tr>
+        <td>Michelle</td>
+        <td>Lee</td>
+        <td>michelle@example.com</td>
+        <td>Artist</td>
+    </tr>
+    <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+        <td>Engineer</td>
+    </tr>
+    <tr>
+        <td>Jane</td>
+        <td>Smith</td>
+        <td>jane@example.com</td>
+        <td>Designer</td>
+    </tr>
+    <tr>
+        <td>Michael</td>
+        <td>Johnson</td>
+        <td>michael@example.com</td>
+        <td>Developer</td>
+    </tr>
+    <tr>
+        <td>Emily</td>
+        <td>Brown</td>
+        <td>emily@example.com</td>
+        <td>Manager</td>
+    </tr>
+    <tr>
+        <td>David</td>
+        <td>Wilson</td>
+        <td>david@example.com</td>
+        <td>Analyst</td>
+    </tr>
+    <tr>
+        <td>Sarah</td>
+        <td>Miller</td>
+        <td>sarah@example.com</td>
+        <td>Consultant</td>
+    </tr>
+    <tr>
+        <td>James</td>
+        <td>Thompson</td>
+        <td>james@example.com</td>
+        <td>Marketing</td>
+    </tr>
+    <tr>
+        <td>Amy</td>
+        <td>Clark</td>
+        <td>amy@example.com</td>
+        <td>HR</td>
+    </tr>
+    <tr>
+        <td>Robert</td>
+        <td>White</td>
+        <td>robert@example.com</td>
+        <td>Writer</td>
+    </tr>
+    <tr>
+        <td>Michelle</td>
+        <td>Lee</td>
+        <td>michelle@example.com</td>
+        <td>Artist</td>
+    </tr>
+    <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+        <td>Engineer</td>
+    </tr>
+    <tr>
+        <td>Jane</td>
+        <td>Smith</td>
+        <td>jane@example.com</td>
+        <td>Designer</td>
+    </tr>
+    <tr>
+        <td>Michael</td>
+        <td>Johnson</td>
+        <td>michael@example.com</td>
+        <td>Developer</td>
+    </tr>
+    <tr>
+        <td>Emily</td>
+        <td>Brown</td>
+        <td>emily@example.com</td>
+        <td>Manager</td>
+    </tr>
+    <tr>
+        <td>David</td>
+        <td>Wilson</td>
+        <td>david@example.com</td>
+        <td>Analyst</td>
+    </tr>
+    <tr>
+        <td>Sarah</td>
+        <td>Miller</td>
+        <td>sarah@example.com</td>
+        <td>Consultant</td>
+    </tr>
+    <tr>
+        <td>James</td>
+        <td>Thompson</td>
+        <td>james@example.com</td>
+        <td>Marketing</td>
+    </tr>
+    <tr>
+        <td>Amy</td>
+        <td>Clark</td>
+        <td>amy@example.com</td>
+        <td>HR</td>
+    </tr>
+    <tr>
+        <td>Robert</td>
+        <td>White</td>
+        <td>robert@example.com</td>
+        <td>Writer</td>
+    </tr>
+    <tr>
+        <td>Michelle</td>
+        <td>Lee</td>
+        <td>michelle@example.com</td>
+        <td>Artist</td>
+    </tr>
+</tbody>
+
+    </table>
+</body>
+</html>

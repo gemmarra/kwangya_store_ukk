@@ -1,0 +1,509 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+:root {
+  --box-shadow-red: 0 2px 6px rgb(255, 0, 0);
+  --box-shadow-purple: 0 2px 6px rgb(157, 0, 255);
+  --box-shadow-blue: 0 2px 6px rgb(55, 0, 255);
+  --box-shadow-green: 0 2px 6px rgb(0, 237, 99);
+  --box-shadow-yellow: 0 2px 6px rgb(255, 242, 0);
+  --box-red: rgb(255, 0, 0);
+  --box-purple: rgb(157, 0, 255);
+  --box-blue: rgb(55, 0, 255);
+  --box-green: rgb(0, 237, 99);
+  --box-yellow: rgb(255, 242, 0);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(13, 0, 151);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 50px;
+}
+
+p.message {
+  width: 95%;
+  padding: 30px;
+  border: 1px solid rgb(0, 214, 128);
+  background-color: rgba(0, 214, 128, 0.367);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+p.failmessage {
+  width: 95%;
+  padding: 30px;
+  border: 1px solid red;
+  background-color: rgba(255, 0, 0, 0.335);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+p.error-form {
+  color: red;
+  margin-top: 4px;
+  text-shadow: rgb(255, 58, 58) 0 0 3px;
+}
+
+.container {
+  /* From https://css.glass */
+  background: rgba(44, 44, 44, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(10px);
+  /* border: 1px solid rgba(255, 255, 255, 0.083); */
+  min-height: 100vh;
+  /* width: 98.5%;
+    margin-top: 7px; */
+  display: grid;
+  grid-template-rows: 1fr 10fr;
+}
+
+header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.083);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  position: sticky; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top */
+  width: 100%; /* Full width */
+}
+
+header.scrolled {
+  background-color: #0000009e;
+  transition: 100ms;
+}
+
+header .logo h3 {
+  color: white;
+  margin-left: 20px;
+  font-weight: bolder;
+}
+
+header .logo h3 i {
+  margin-right: 5px;
+}
+
+header .user-name {
+  margin-right: 20px;
+  color: white;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  color: white;
+}
+
+main nav {
+  border-right: 1px solid rgba(255, 255, 255, 0.083);
+  display: flex;
+  flex-direction: column;
+}
+
+main nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 100%;
+  margin: 20px 25px 8px 7px;
+  padding: 8px 15px;
+}
+
+main nav a i {
+  margin-right: 5px;
+}
+
+main nav a:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+main .content {
+  display: grid;
+  grid-template-rows: 1fr 10fr;
+}
+
+main .content sub-nav {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.083);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .content sub-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  margin: 0 25px;
+  border-bottom: 2px solid transparent;
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 0;
+}
+
+main .content sub-nav a.active {
+  border-bottom: 2px solid white;
+}
+
+main .content main-content {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+main .content main-content a {
+  color: white;
+  text-decoration: none;
+}
+
+main .content main-content .btn,
+.modal .modal-footer .btn {
+  border: 1px solid rgba(255, 255, 255);
+  padding: 6px 10px;
+  border-radius: 50px;
+  transition: 100ms;
+  font-size: 1rem;
+}
+
+main .content main-content .btn:hover,
+.modal .modal-footer .btn:hover {
+  background-color: rgba(255, 255, 255);
+  transition: 150ms;
+  color: black;
+  cursor: pointer;
+}
+
+main .content main-content .title-add {
+  display: flex;
+  justify-content: space-between;
+}
+
+table {
+  width: 100%;
+  margin-top: 40px;
+  font-weight: 600;
+}
+
+table td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.138);
+}
+
+table th {
+  text-align: left;
+  padding: 10px;
+}
+
+table td.cashier_id {
+  text-align: left;
+}
+
+table td:nth-last-child(1) {
+  display: flex;
+  /* margin: 0 5px; */
+  justify-content: flex-end;
+}
+
+table td.action {
+  display: flex;
+  justify-content: space-around;
+}
+
+table td.action a i {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+table td.action a {
+  border: 1px solid white;
+  border-radius: 50px;
+  padding: 5px 7px;
+  transition: 100ms;
+}
+
+table td.action a.btn-edit:hover {
+  border: 1px solid #000ac3;
+  background-color: #000ac357;
+  transition: 100ms;
+  color: white;
+}
+
+table td.action a.btn-delete:hover {
+  border: 1px solid red;
+  background-color: rgba(255, 0, 0, 0.429);
+  transition: 100ms;
+  color: white;
+}
+
+table td.action a.btn-see:hover {
+  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.394);
+  transition: 100ms;
+  color: white;
+}
+
+table tr:hover {
+  background: rgba(73, 73, 73, 0.2);
+  transition: 200ms;
+}
+
+table tr {
+  transition: 200ms;
+}
+
+main .content main-content form {
+  background: rgba(164, 164, 164, 0);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  border-radius: 8px;
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.138);
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 30px 7px 30px;
+  margin-top: 20px;
+}
+
+main .content main-content form .input-group label,
+.modal .modal-body .input-group label {
+  font-weight: 600;
+}
+
+main .content main-content form input,
+main .content main-content form select,
+.modal .modal-body form input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  width: 25rem;
+  padding: 7px 7px 7px 0;
+  color: white;
+  font-size: 1rem;
+}
+
+main .content main-content form select {
+  width: 26rem;
+}
+
+main .content main-content form input:focus,
+main .content main-content form select:focus,
+.modal .modal-body form input:focus {
+  outline: none;
+}
+
+main .content main-content form select option {
+  color: var(--box-purple);
+}
+
+main .content main-content form select:checked {
+  background-color: var(--box-purple);
+}
+
+main .content main-content form label {
+  margin-bottom: 5px;
+}
+
+main .content main-content form .input-group {
+  margin-bottom: 25px;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 30px;
+  border: 1px solid white;
+  transition: 150ms;
+}
+
+.custom-file-upload:hover {
+  background-color: #006adb;
+  border: 1px solid #006adb;
+  transition: 150ms;
+}
+
+#file-name {
+  margin-left: 10px;
+  overflow: hidden;
+  color: rgb(190, 190, 190);
+}
+
+/* Hide original file input */
+input[type="file"] {
+  display: none;
+}
+
+.save {
+  display: flex;
+  /* justify-content: flex-end; */
+}
+
+.form-side {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+main .content main-content form form-1 .form-side input,
+main .content main-content form form-1 .form-side select {
+  width: 12rem;
+}
+
+main .content main-content form form-1 .form-side select {
+  padding: 6px 7px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background: rgba(44, 44, 44, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background: rgba(44, 44, 44, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(10px);
+  margin: auto;
+  padding: 0;
+  width: 60%;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/* The Close Button */
+.close-addC,
+.close-addD,
+.close-editC,
+.close-editD {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  background: transparent;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(10px);
+  padding: 10px;
+  border-bottom: 1px solid white;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  background: transparent;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(10px);
+  padding: 10px;
+  border-top: 1px solid white;
+}
+
+main .content main-content .cards {
+  display: flex;
+  justify-content: space-between;
+  height: 30%;
+}
+
+main .content main-content .cards .card {
+  background: rgba(84, 84, 84, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  border-radius: 8px;
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.138);
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+main .content main-content .cards .card h3 {
+  text-align: right;
+}
+
+table.selling-details {
+  background: rgba(164, 164, 164, 0);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  border-radius: 8px;
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.138);
+  width: 50%;
+}

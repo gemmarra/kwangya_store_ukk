@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  color: white;
+}
+
+body {
+  background-image: url("../img/wallpaper/bg8.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  color: white;
+}
+
+p.failmessage {
+  color: red;
+  text-shadow: rgb(255, 58, 58) 0 0 3px;
+  text-align: center;
+}
+
+main {
+  height: 100vh;
+  margin-right: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .card {
+  background: rgba(220, 220, 220, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 9px;
+  width: 68%;
+  height: 45%;
+  border: 1.5px solid rgba(179, 179, 179, 0.269);
+  padding-top: 50px;
+}
+
+main .card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+main .card form {
+  margin-left: 30px;
+  font-size: 1rem;
+}
+
+main .card form button {
+  border: 1px solid white;
+  width: 40%;
+  padding: 10px 0;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1rem;
+  margin: 0 0 15px 25%;
+  border-radius: 50px;
+  transition: 100ms;
+}
+
+main .card form button:hover {
+  color: black;
+  background-color: white;
+  transition: 100ms;
+}
+
+main .card form .input-group label {
+  font-weight: 600;
+}
+
+main .card form .input-group input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  width: 90%;
+  padding: 7px 7px 7px 0;
+  color: white;
+  font-size: 1rem;
+}
+
+main .card form input:focus,
+main .card form input:active {
+  outline: none;
+  background: transparent;
+}
+
+main .card form label {
+  margin-bottom: 5px;
+}
+
+main .card form .input-group {
+  margin-bottom: 25px;
+}
+
+.greeting {
+  margin-left: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.greeting h1 {
+  margin-bottom: 7px;
+  line-height: 45px;
+}
+
+.greeting p {
+  line-height: 25px;
+}
