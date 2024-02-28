@@ -13,6 +13,9 @@ class SellingDetails extends BaseController
 		// 	return redirect()->to('tampil-product');
 		// 	exit;		
 		// }
+		if(!session()->get('sudahkahLogin')){
+   		 return redirect()->to('login');
+   	 }
 		
 		$syarat=[
 			'factur'=>$nofactur

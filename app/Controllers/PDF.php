@@ -10,6 +10,9 @@ class PDF extends BaseController
 {
     public function index()
     {
+        if(!session()->get('sudahkahLogin')){
+   		 return redirect()->to('login');
+   	 }
         return view('pdf_view');
     }
 

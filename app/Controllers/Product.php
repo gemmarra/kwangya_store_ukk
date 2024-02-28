@@ -10,6 +10,9 @@ class Product extends BaseController
 {
     public function index()
     {
+        if(!session()->get('sudahkahLogin')){
+   		 return redirect()->to('login');
+   	 }
         $validasiForm=[
             'search' => 'required'
         ];

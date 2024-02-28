@@ -8,12 +8,43 @@ use Dompdf\Dompdf;
 
 class Selling extends BaseController
 {
+    
     public function index(){
-            $data = [
-                'page_title' => 'Selling',
-                'SellingList' => $this->selling->selecting()
-            ];
-            return view('Selling/select', $data);
+        if(!session()->get('sudahkahLogin')){
+   		 return redirect()->to('login');
+   	 }
+    //  $seereport = [
+    //     'range' => 'required',
+    //     'month' => 'required',
+    //     'year'=>   'required',
+    //  ];
+
+    //  if($seereport){
+    //     $range = $this->request->getPost('year-month');
+    //     $month = $this->request->getPost('month');
+    //     $year = $this->request->getPost('year');
+    //     if ($range == "monthly"){
+    //         $result = $this->selling->report_month($month, $year);   
+    //         $data = [
+    //             'page_title' => 'Selling',
+    //             'SellingList' => $result,
+    //         ];
+    //         return view('Selling/select', $data);
+    //     }  elseif ($range == "yearly") {
+            //$result = $this->selling->report_year($year);
+    //         $data = [
+    //             'page_title' => 'Selling',
+    //             'SellingList' => $result,
+    //         ];
+    //         return view('Selling/select', $data);
+    //     //}
+    //  } else {
+        $data = [
+            'page_title' => 'Selling',
+            'SellingList' => $this->selling->selecting()
+        ];
+        return view('Selling/select', $data);
+     //}
     }
 
     public function cashiermachine()

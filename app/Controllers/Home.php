@@ -11,6 +11,9 @@ class Home extends BaseController
 
     public function dashboard()
     {
+        if(!session()->get('sudahkahLogin')){
+   		 return redirect()->to('login');
+   	 }
         date_default_timezone_set('Asia/Jakarta');
         $date = date('Y-m-d H:i:s');
         $db = \Config\Database::connect();

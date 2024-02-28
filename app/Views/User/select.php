@@ -11,7 +11,13 @@
 </div>
 <?php endif; ?>
 <?php if(isset($UserList)) : ?>
-<table>
+<table id="myTable">
+  <thead>
+    <th>Email</th>
+    <th>Name</th>
+    <th>Role</th>
+    <th style="text-align:start;">Action</th>
+  </thead>
   <tbody>
   <?php
     if(isset($UserList)) :

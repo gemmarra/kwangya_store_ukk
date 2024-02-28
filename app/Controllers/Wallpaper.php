@@ -9,6 +9,7 @@ class Wallpaper extends BaseController
 {
     public function index()
     {
+        
         $wallpaper = $this->wallpaper->findAll();
 
         return view('layout', $wallpaper);

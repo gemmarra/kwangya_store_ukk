@@ -11,6 +11,7 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css');?>">
+    <link rel="stylesheet" href="<?= base_url('DataTables/datatables.css');?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,22 +67,34 @@
             <div class="logo"><h3><i class="bi bi-stack"></i> KWANGYA STORE</h3></div>
             <div class="user-name">
             <?php                
-                if(isset($search)) :
-                echo $search;
-                endif;
+                // if(isset($search)) :
+                // echo $search;
+                // endif;
             ?>    
             <h3>Hello, <?=session()->get('name')?>!</h3></div>
         </header>
         <main>
             <nav>
-                <a href="/dashboard"><i class="bi bi-grid-fill"></i> Dashboard</a>
-                <a href="/selling/cashier_machine"><i class="bi bi-calculator-fill"></i> Cashier Machine</a>
-                <a href="/product/select"><i class="bi bi-box-seam-fill"></i> Product</a>
-                <a href="/selling/select"><i class="bi bi-currency-exchange"></i> Selling</a>
-                <a href="/purchase/select"><i class="bi bi-cart-fill"></i> Purchase</a>
-                <a href="/user/select"><i class="bi bi-people-fill"></i> User</a>
-                <a href="/report"><i class="bi bi-folder-fill"></i> Report</a>
-                <a href="/logout"><i class="bi bi-door-open-fill"></i> Logout</a>
+                <?php if(session()->get('role') == "administrator") : ?>
+                    <a href="/dashboard"><i class="bi bi-grid-fill"></i> Dashboard</a>
+                    <a href="/selling/cashier_machine"><i class="bi bi-calculator-fill"></i> Cashier Machine</a>
+                    <a href="/product/select"><i class="bi bi-box-seam-fill"></i> Product</a>
+                    <a href="/selling/select"><i class="bi bi-currency-exchange"></i> Selling</a>
+                    <a href="/purchase/select"><i class="bi bi-cart-fill"></i> Purchase</a>
+                    <a href="/user/select"><i class="bi bi-people-fill"></i> User</a>
+                    <a href="/report"><i class="bi bi-folder-fill"></i> Report</a>
+                    <a href="/logout"><i class="bi bi-door-open-fill"></i> Logout</a>
+                <?php elseif(session()->get('role') == "cashier"): ?>
+                    <a href="/dashboard"><i class="bi bi-grid-fill"></i> Dashboard</a>
+                    <a href="/selling/cashier_machine"><i class="bi bi-calculator-fill"></i> Cashier Machine</a>
+                    <a href="/selling/select"><i class="bi bi-currency-exchange"></i> Selling</a>
+                    <a href="/logout"><i class="bi bi-door-open-fill"></i> Logout</a>
+                <?php elseif(session()->get('role') == "inventory_manager"): ?>
+                    <a href="/dashboard"><i class="bi bi-grid-fill"></i> Dashboard</a>
+                    <a href="/product/select"><i class="bi bi-box-seam-fill"></i> Product</a>
+                    <a href="/report"><i class="bi bi-folder-fill"></i> Report</a>
+                    <a href="/logout"><i class="bi bi-door-open-fill"></i> Logout</a>
+                <?php endif; ?>
             </nav>
             <div class="content">
                 <sub-nav>
@@ -179,7 +192,9 @@
     <script src="<?=base_url('assets/js/dropdown.js');?>"></script>
     <script src="<?=base_url('assets/js/confirm_password.js');?>"></script>
     <script src="<?=base_url('assets/js/jquery_mask/src/jquery.mask.js');?>"></script>
+    <script src="<?=base_url('DataTables/datatables.min.js');?>"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="<?=base_url('assets/js/jquery_mask/dist/jquery.mask.js');?>"></script>
     <script>
         $(document).ready(function(){
@@ -207,6 +222,11 @@
             monthGroup.style.display = "none";
         }
     }
+</script>
+<script>
+    $($document).ready(function(){
+        $("#myTable").DataTable()
+    });
 </script>
 
 </body>

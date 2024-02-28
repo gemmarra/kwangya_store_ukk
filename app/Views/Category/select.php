@@ -11,7 +11,12 @@
 </div>
 <?php endif; ?>
 <?php if(isset($CategoryList)) : ?>
-<table>
+<table id="myTable">
+  <thead>
+    <th>#</th>
+    <th>Category Name</th>
+    <th>Action</th>
+  </thead>
   <tbody>
   <?php
     if(isset($CategoryList)) :

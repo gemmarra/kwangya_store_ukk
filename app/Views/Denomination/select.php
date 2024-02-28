@@ -11,7 +11,12 @@
 </div>
 <?php endif; ?>
 <?php if(isset($DenominationList)) : ?>
-<table>
+<table id="myTable">
+  <thead>
+    <th>#</th>
+    <th>Denomination Name</th>
+    <th style="text-align: start;">Action</th>
+  </thead>
   <tbody>
   <?php
     if(isset($DenominationList)) :

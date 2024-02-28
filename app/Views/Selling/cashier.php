@@ -119,6 +119,26 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="<?=base_url('assets/js/jquery_mask/dist/jquery.mask.js');?>"></script>
 <script>
+        $(document).ready(function() {
+            // Function to fetch updates
+            function fetchUpdates() {
+                $.ajax({
+                    url: '/selling/cashier_machine',
+                    method: 'GET',
+                    success: function(data) {
+                        $('#liveUpdates').html(data); // Update the content of liveUpdates div
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching updates:', error);
+                    }
+                });
+            }
+
+            // Fetch updates every 5 seconds
+            setInterval(fetchUpdates, 1000); // Adjust the interval as needed
+        });
+</script>
+<script>
     $(document).ready(function(){
         $('.money').mask('000.000.000.000.000', {reverse: true});
     })
@@ -151,31 +171,6 @@
 $(document).ready(function() {
     $('.js-example-basic-multiple').select2();
     $('.js-example-basic-single').select2();
-});
-</script>
-<script>
-    $(document).ready(function() {
-
-    // Add to cart
-    $('.button').on('click', function() {
-        var factur = $('#numberCode').text();
-        
-        $.ajax({
-            url: '/selling/save', // Replace with your actual controller endpoint
-            method: 'POST',
-            data: {
-                factur: factur
-            },
-            success: function(response) {
-                // Handle success response
-                console.log(response);
-            },
-            error: function(xhr, status, error) {
-                // Handle error
-                console.error(error);
-            }
-        });
-    });
 });
 </script>
 <script>

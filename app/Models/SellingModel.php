@@ -71,10 +71,6 @@ class SellingModel extends Model
     //     ->price_total; // Access the sum of price_total
     // }
 
-    public function getLatestSellingId() {
-        return $this->db->table('selling')->orderBy('selling_id', 'desc')->limit(1)->get()->getRow()->selling_id;
-    }
-
     public function generateFactur()
     {
         $tgl = date('Ymd');
@@ -90,4 +86,15 @@ class SellingModel extends Model
         return $factur;
     }
     
+    public function report_month($month, $year){
+        $selling=NEW SellingModel;
+        $queryselling = $selling->query("CALL `report_monthly`(".$month.",".$year.")")->getResult();
+        return $queryselling;
+    }
+    
+    public function report_year($year){
+        $selling=NEW SellingModel;
+        $queryselling = $selling->query("CALL `report_yearly`(".$year.")")->getResult();
+        return $queryselling;
+    }
 }

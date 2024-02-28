@@ -11,7 +11,13 @@
 </div>
 <?php endif; ?>
 <?php if(isset($PurchaseList)) : ?>
-<table>
+<table id="myTable">
+  <thead>
+    <th>#</th>
+    <th>Date & Time</th>
+    <th>Expenditure Total</th>
+    <th>Action</th>
+  </thead>
   <tbody>
   <?php
     if(isset($PurchaseList)) :

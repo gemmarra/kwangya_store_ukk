@@ -10,6 +10,9 @@ class User extends BaseController
 {
     public function index()
     {
+        if(!session()->get('sudahkahLogin')){
+   		 return redirect()->to('login');
+   	 }
         $validasiForm=[
             'search' => 'required'
         ];
@@ -32,44 +35,97 @@ class User extends BaseController
     }
     }
 
-    public function login(){
+    public function login()
+    {
+        $validasiForm = [
+            'email' => 'required',
+            'password' => 'required'
+        ];
+        
+        if ($this->validate($validasiForm)) {
+            $email = $this->request->getPost('email');
+            $password = md5($this->request->getPost('password'));
+            $whereLogin = [
+                'email' => $email,
+                'password' => $password
+            ];
+
+            //select * from tbl_user where email='$email' and password='$password'
+            $cekLogin = $this->user->where($whereLogin)->findAll();
+            if (count($cekLogin) == 1) {
+                // Check if the user is active
+                // if ($cekLogin[0]['status'] == 'aktif') {
+
+                //jika ditemukan data
+                // 1. buat session email, nama, level
+                $dataSession = [
+                    'email' => $cekLogin[0]['email'],
+                    'name' => $cekLogin[0]['name'], // Add this line to store the user's name
+                    'password' => $cekLogin[0]['password'],
+                    'role' => $cekLogin[0]['role'],
+                    'sudahkahLogin' => true
+                ];
+                
+                session()->set($dataSession);
+                return redirect()->to('/dashboard');
+            //     } else {
+            //     // User is not active, show an error message
+            //     return redirect()->to('/login')->with('pesan', '<p class="text-danger text-center">
+            //         Gagal Login! <br> Akun tidak aktif!</p>');
+            // }
+
+            } else {
+                //jika tidak ditemukan apapun
+                return redirect()->to('/login')->with('pesan', '<p class="text-danger text-center">
+                Gagal Login! <br> Periksa Email atau Password!</p>');
+            }
+        }
         return view('Auth/login');
     }
 
-    public function auth()
-    {
-        $session = session();
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
-        $data = $this->user->where('email', $email)->first();
-        if($data){
-            $pass = $data['password'];
-            $verify_pass = password_verify($password, $pass);
-            if($verify_pass){
-                $ses_data = [
-                    'email'    => $data['email'],
-                    'name'     => $data['name'],
-                    'role'     => $data['role'],
-                    'logged_in'     => TRUE
-                ];
-                $session->set($ses_data);
-                return redirect()->to('/dashboard');
-            }else{
-                $session->setFlashdata('failmessage', '<p class="failmessage">Wrong Password</p>');
-                return redirect()->to('/');
-            }
-        }else{
-            $session->setFlashdata('failmessage', '<p class="failmessage">Email is not found</p>');
-            return redirect()->to('/');
-        }
+    public function logout(){
+   	    session()->destroy();
+   	    return redirect()->to('/login');
     }
+
+    // public function login(){
+    //     return view('Auth/login');
+    // }
+
+    // public function auth()
+    // {
+    //     $session = session();
+    //     $email = $this->request->getVar('email');
+    //     $password = $this->request->getVar('password');
+    //     $data = $this->user->where('email', $email)->first();
+    //     if($data){
+    //         $pass = $data['password'];
+    //         $verify_pass = password_verify($password, $pass);
+    //         if($verify_pass){
+    //             $ses_data = [
+    //                 'email'    => $data['email'],
+    //                 'name'     => $data['name'],
+    //                 'role'     => $data['role'],
+    //                 'logged_in'     => TRUE
+    //             ];
+    //             $session->set($ses_data);
+    //             return redirect()->to('/dashboard');
+    //         }else{
+    //             $session->setFlashdata('failmessage', '<p class="failmessage">Wrong Password</p>');
+    //             return redirect()->to('/');
+    //         }
+    //     }else{
+    //         $session->setFlashdata('failmessage', '<p class="failmessage">Email is not found</p>');
+    //         return redirect()->to('/');
+    //     }
+    // }
  
-    public function logout()
-    {
-        $session = session();
-        $session->destroy();
-        return redirect()->to('/');
-    }
+    // public function logout()
+    // {
+    //     $session = session();
+    //     $session->destroy();
+    //     return redirect()->to('/');
+    // }
 
     // public function login()
     // {

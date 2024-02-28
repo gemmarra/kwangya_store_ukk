@@ -69,7 +69,7 @@ p.error-form {
   /* width: 98.5%;
     margin-top: 7px; */
   display: grid;
-  grid-template-rows: 1fr 10fr;
+  grid-template-rows: 70px 10fr;
 }
 
 header {
@@ -135,7 +135,7 @@ main nav a:hover {
 
 main .content {
   display: grid;
-  grid-template-rows: 1fr 10fr;
+  grid-template-rows: 50px 10fr;
 }
 
 main .content sub-nav {
@@ -195,8 +195,8 @@ main .content main-content .title-add {
 
 table {
   width: 100%;
-  margin-top: 40px;
   font-weight: 600;
+  font-size: 0.9rem;
 }
 
 table td {
@@ -506,4 +506,31 @@ table.selling-details {
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.138);
   width: 50%;
+}
+
+.report {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+main .content main-content .report .report-form {
+  display: flex;
+  outline: none;
+}
+
+main .content main-content .report .report-form input,
+main .content main-content .report .report-form select {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 7px;
+  color: white;
+  font-size: 1rem;
+  border-radius: 7px;
+  margin-right: 10px;
+}
+
+main .content main-content .report .report-form input:focus,
+main .content main-content .report .report-form select:focus {
+  outline: none;
 }

@@ -12,7 +12,7 @@
 </div>
 <?php endif; ?>
 <?php if(isset($ProductList)) : ?>
-<table>
+<table id="myTable">
 <thead>
       <tr>
           <th>Product ID</th>
@@ -22,7 +22,7 @@
           <th>Denomination</th>
           <th>Selling Price</th>
           <th>Purchase Price</th>
-          <th>Action</th>
+          <th style="text-align: start;">Action</th>
       </tr>
     </thead>
   <tbody>

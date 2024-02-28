@@ -241,7 +241,7 @@
             // Fetch updates every 5 seconds
             setInterval(fetchUpdates, 1000); // Adjust the interval as needed
         });
-    </script>
+</script>
 
 <!-- Color Pattern -->
 <!-- <script>
