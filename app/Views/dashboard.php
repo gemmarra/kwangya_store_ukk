@@ -12,6 +12,7 @@
     </div>
     <div class="card">
         <h2>Zero Stock</h2>
+        <h3><?=$zero_stock_products?></h3>
     </div>
 </div>
 

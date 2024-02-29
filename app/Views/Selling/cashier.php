@@ -98,7 +98,7 @@
     <div class="modal-body">
         <form action="/selling/insert_total" method="post">
             <label for="grandtotal">Total</label>
-            <input type="text" class="money" id="grandtotal" oninput="calculate()" required name="grand_total" data-mask="000.000.000.000.000" disabled value="<?=number_format($grand_total, 0, ',', '.');?>">
+            <input type="text" class="money" id="grandtotal" oninput="calculate()" required name="grand_total" data-mask="000.000.000.000.000" readonly value="<?=number_format($grand_total, 0, ',', '.');?>">
             <br><br>
             <label for="payedmoney">Payed</label>
             <input type="text" class="money" id="payedmoney" oninput="calculate()" required name="payed_money" data-mask="000.000.000.000.000" autofocus>

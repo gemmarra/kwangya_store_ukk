@@ -35,7 +35,7 @@ $routes->post('/user/update_password/(:any)', 'User::update_password/$1',['filte
 // Selling
 $routes->get('/selling/select', 'Selling::index', ['filter'=>'autentifikasi']);
 $routes->get('/selling/cashier_machine', 'Selling::cashiermachine', ['filter'=>'autentifikasi']);
-$routes->post('/selling/search', 'Selling::cashiermachine', ['filter'=>'autentifikasi']);
+// $routes->post('/selling/search', 'Selling::cashiermachine', ['filter'=>'autentifikasi']);
 $routes->get('/selling/today_income', 'Selling::today_income', ['filter'=>'autentifikasi']);
 $routes->post('/selling/insert_total', 'Selling::insert_total', ['filter'=>'autentifikasi']);
 $routes->post('/selling/save', 'Selling::save', ['filter'=>'autentifikasi']);
@@ -90,4 +90,5 @@ $routes->post('/purchase/update/(:num)', 'Purchase::update/$1', ['filter'=>'aute
 
 // Report
 $routes->get('/report', 'Report::index',['filter'=>'autentifikasi']);
+$routes->get('/report_result', 'Report::index',['filter'=>'autentifikasi']);
 $routes->post('/reportgenerate', 'Report::generate_report', ['filter'=>'autentifikasi']);
