@@ -77,10 +77,13 @@ class ProductModel extends Model
         return $queryproduct;
     }
 
-    public function zero_stock(){
-        $product=NEW ProductModel;
-        $queryproduct = $product->query("CALL zero_stock()")->getRow();
-        return $queryproduct;
+    public function zerostock(){
+        return $this->db->table('product')
+        ->select('COUNT(product_id) AS zero_stock')
+        ->where('product.stock = 0')
+        ->get()
+        ->getRow() // Retrieve a single row
+        ->zero_stock;
     }
 
     public function searching_id_no_zero($product_id){

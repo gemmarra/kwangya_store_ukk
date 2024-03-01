@@ -7,7 +7,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class SellingDetails extends BaseController
 {
-    public function index($nofactur)
+    public function index($sellingid)
 	{
 		// if(session()->get('level')!='Admin'){
 		// 	return redirect()->to('tampil-product');
@@ -18,12 +18,12 @@ class SellingDetails extends BaseController
    	 }
 		
 		$syarat=[
-			'factur'=>$nofactur
+			'selling_id'=>$sellingid
 		];
 
 		$data=[
 			'page_title' =>'Selling Details',
-	 		'SellingDetailsList' => $this->sellingdetails->selecting($syarat)
+	 		'SellingDetailsList' => $this->sellingdetails->selecting($syarat),
 		];
 		//var_dump($data);
 		return view('SellingDetails/select', $data);

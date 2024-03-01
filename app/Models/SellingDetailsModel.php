@@ -42,8 +42,8 @@ class SellingDetailsModel extends Model
 
     public function selecting($data){
         $sellingdetails=NEW SellingDetailsModel;
-        $factur = $data ['factur'];
-        $querysellingdetails = $sellingdetails->query("CALL `select_sellingdetails`('".$factur."')")->getResult();
+        $selling_id = $data ['selling_id'];
+        $querysellingdetails = $sellingdetails->query("CALL `select_sellingdetails`('".$selling_id."')")->getResult();
         return $querysellingdetails;
     }
 
@@ -63,5 +63,5 @@ class SellingDetailsModel extends Model
             ->get()
             ->getRow() // Retrieve a single row
             ->price_total; // Access the sum of price_total
-    }    
+    }
 }

@@ -53,23 +53,23 @@ class SellingModel extends Model
         return $queryselling;
     }
 
-    public function today_income($date){
+    public function todayincome(){
         return $this->db->table('selling')
-        ->selectSum('grand_total') // Selects the sum of price_total directly
-        ->where('selling.selling_id', $date)
+        ->select('SUM(grand_total) AS today_income')
+        ->like('DATE(selling.datetime)', date('Y-m-d'))
         ->get()
         ->getRow() // Retrieve a single row
-        ->grand_total; // Access the sum of price_total
+        ->today_income;
     }
 
-    // public function today_selling($date){
-    //     return $this->db->table('selling')
-    //     ->s('price_total') // Selects the sum of price_total directly
-    //     ->where('selling_details.selling_id', $date)
-    //     ->get()
-    //     ->getRow() // Retrieve a single row
-    //     ->price_total; // Access the sum of price_total
-    // }
+    public function todayselling(){
+        return $this->db->table('selling')
+        ->select('COUNT(selling.selling_id) AS today_selling')
+        ->like('DATE(selling.datetime)', date('Y-m-d'))
+        ->get()
+        ->getRow() // Retrieve a single row
+        ->today_selling;
+    }
 
     public function generateFactur()
     {

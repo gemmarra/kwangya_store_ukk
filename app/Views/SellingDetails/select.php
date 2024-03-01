@@ -7,7 +7,7 @@
 </div>
 <div class="title-add">
   <!-- <div class="title"><h2><?=$page_title?></h2> </div> -->
-</div>
+</div> <br>
 <table class="selling-details">
   <tbody>
 <?php

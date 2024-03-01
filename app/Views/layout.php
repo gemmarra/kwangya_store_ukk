@@ -212,7 +212,7 @@
         });
     });
     </script>
-    <script>
+<script>
     function toggleMonthSelect() {
         var yearMonth = document.getElementById("range-year-month");
         var monthGroup = document.getElementById("month-group");

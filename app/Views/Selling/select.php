@@ -68,7 +68,7 @@
         $html .='<td>'.number_format($row->payed_money, 2, ',', '.').'</td>'; 
         $html .='<td>'.number_format($row->change_money, 2, ',', '.').'</td>'; 
         $html .='<td class="cashier_id">'.$row->cashier.'</td>';
-        $html .='<td class="action"><a href="/sellingdetails/select/'.$row->factur.'" class="mr-2 h5 btn-see">See Details</a></td>';  
+        $html .='<td class="action"><a href="/sellingdetails/select/'.$row->selling_id.'" class="mr-2 h5 btn-see">See Details</a></td>';  
         $html .='</tr>';
       endforeach;    
       endif;
