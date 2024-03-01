@@ -12,7 +12,7 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <!-- CSS -->
-    <link rel="stylesheet" href="<?=base_url('select2/css/select2.min.css');?>">
+    <link rel="stylesheet" href="<?=base_url('select2/css/select2.css');?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/cashier2.css'); ?>" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
@@ -35,7 +35,7 @@
     </header>
     <form action="/selling/save" method="post" id="sellingForm">
         <div class="input-group">
-            <select class="js-example-basic-single" name="product_id" >
+            <select class="js-example-basic-multiple" style="color:black;" name="product_id">
             <?php if(isset($ProductList)) :
                         foreach ($ProductList as $row) : ?>  
                         <option value="<?=$row->product_id;?>"><?=$row->product_name;?> | <?=$row->stock;?></option>
@@ -166,11 +166,10 @@
 
 
 <script src="<?=base_url('assets/js/pay.js');?>"></script>
-<script src="<?=base_url('select2/js/i18n/select2.full.min.js');?>"></script>
+<script src="<?=base_url('select2/js/select2.min.js');?>"></script>
 <script>
 $(document).ready(function() {
     $('.js-example-basic-multiple').select2();
-    $('.js-example-basic-single').select2();
 });
 </script>
 <script>

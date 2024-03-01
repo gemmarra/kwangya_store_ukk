@@ -56,6 +56,7 @@ class Selling extends BaseController
                 'sellingdetails' => $this->sellingdetails->showing_details(session()->get('SellingID')),
                 'grand_total' => $grand_total
             ];
+            //return view('Selling/cashier-machine', $datalist);
             return view('Selling/cashier', $datalist);
     }
 

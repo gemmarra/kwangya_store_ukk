@@ -70,6 +70,7 @@
     <title>KWANGYA STORE</title>
   </head>
   <body>
+    <div id="liveUpdates"></div>
     <div class="cashier">
       <!-- Product -->
         <div class="product">
@@ -103,6 +104,7 @@
             <i class="bi bi-plus-circle increment"></i>
         </div>
         <div class="price"><?= number_format($row->selling_price, 2, ',', '.') ?></div>
+        <input type="hidden" name="factur" id="facturInput">
         <button class="btn btn-add">Add</button>
     </div>
     <?php 
@@ -131,23 +133,27 @@
         <div class="counter">
             <div class="order">
                 <div class="order-header fw-bold">
-                    <p>Factur #<span id="numberCode" class="factur"></span></p>
+                    <p>Factur #<span id="factur"><?=$factur?></span></p>
                 </div>
                 <div class="order-list" id="cart-items">
                     <table>
                         <tbody>
                         <?php
-                            if(isset($sellingdetails)&& !empty($sellingdetails)) :
-                            $no = null;
-                            foreach($sellingdetails as $row) : 
-                            ?>
-                            <td><?=$row['product_name'];?></td>
-                            <td><?=$row['quantity'];?></td>
-                            <td><?=number_format($row['price'], 2, ',', '.');?></td>
-                            <?php
-                            endforeach;    
-                            endif;
-                        ?>
+            if(isset($sellingdetails)&& !empty($sellingdetails)) :
+            $no = null;
+            foreach($sellingdetails as $row) :
+            $no++;
+            ?>
+            <tr>
+            <td><?=$no?></td>
+            <td><?=$row['product_name'];?></td>
+            <td><?=$row['quantity'];?></td>
+            <td><?=number_format($row['price_total'], 2, ',', '.');?></td>
+            </tr>
+            <?php
+            endforeach;    
+            endif;
+        ?>
                         </tbody>
                     </table>
                 </div>
@@ -194,6 +200,7 @@
     </div>
 
     </div>
+        </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="<?=base_url('assets/js/jquery_mask/dist/jquery.mask.js');?>"></script>
@@ -402,7 +409,7 @@
         var quantity = parseInt(productItem.find('.quantity').text()); // Get updated quantity
         var price = productItem.data('price');
         var productId = productItem.data('productid');
-        var factur = $('#numberCode').text();
+        var factur = $('#factur').text();
         var grand_total = $('#grandtotal').text();
         var payed_money = $('#payedmoney').text();
         var change_money = $('#changemoney').text();

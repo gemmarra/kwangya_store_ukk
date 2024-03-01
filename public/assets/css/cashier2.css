@@ -11,9 +11,25 @@
 }
 
 body {
-  background-image: url("../img/wallpaper/bg11.jpg");
+  background-image: url("../img/wallpaper/bg6.jpg");
   background-size: cover;
   overflow: hidden;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(13, 0, 151);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 50px;
 }
 
 .cashier {
