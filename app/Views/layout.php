@@ -92,6 +92,7 @@
                 <?php elseif(session()->get('role') == "inventory_manager"): ?>
                     <a href="/dashboard"><i class="bi bi-grid-fill"></i> Dashboard</a>
                     <a href="/product/select"><i class="bi bi-box-seam-fill"></i> Product</a>
+                    <a href="/purchase/select"><i class="bi bi-cart-fill"></i> Purchase</a>
                     <a href="/report"><i class="bi bi-folder-fill"></i> Report</a>
                     <a href="/logout"><i class="bi bi-door-open-fill"></i> Logout</a>
                 <?php endif; ?>
