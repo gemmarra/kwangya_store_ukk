@@ -47,21 +47,21 @@ class Home extends BaseController
         return view('dashboard', $data);
     }
 
-    public function coba1()
-    {
-        $data = [
-            'CategoryList' => $this->category->selecting(),
-            'ProductList' => $this->product->selecting(),
-        ];
-        return view('coba', $data);
-    }
+    // public function coba1()
+    // {
+    //     $data = [
+    //         'CategoryList' => $this->category->selecting(),
+    //         'ProductList' => $this->product->selecting(),
+    //     ];
+    //     return view('coba', $data);
+    // }
 
-    public function coba2()
-    {
-        // $data = [
-        //     'CategoryList' => $this->category->selecting(),
-        //     'ProductList' => $this->product->selecting(),
-        // ];
-        return view('coba2');
-    }
+    // public function coba2()
+    // {
+    //     // $data = [
+    //     //     'CategoryList' => $this->category->selecting(),
+    //     //     'ProductList' => $this->product->selecting(),
+    //     // ];
+    //     return view('coba2');
+    // }
 }
