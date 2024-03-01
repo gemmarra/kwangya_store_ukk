@@ -174,41 +174,6 @@ $(document).ready(function() {
 });
 </script>
 <script>
-    function generateCode() {
-      let today = new Date();
-      let year = today.getFullYear();
-      let month = String(today.getMonth() + 1).padStart(2, '0'); // Adding 1 because months are zero-indexed
-      let day = String(today.getDate()).padStart(2, '0');
-      
-      let currentDateCode = `${year}${month}${day}`;
-
-      // Retrieve the last generated date from storage (local storage, database, etc.)
-      let lastGeneratedDate = localStorage.getItem('lastGeneratedDate');
-      
-      let code;
-      
-      if (lastGeneratedDate === currentDateCode) {
-        // Retrieve the last generated number code and increment it
-        let lastGeneratedNumber = parseInt(localStorage.getItem('lastGeneratedNumber'), 10) || 0;
-        let newNumber = String(lastGeneratedNumber + 1).padStart(3, '0');
-        
-        code = `${currentDateCode}${newNumber}`;
-      } else {
-        // If date changemoneyd, start the number from 001
-        code = `${currentDateCode}001`;
-      }
-      
-      // Save the current date and number to storage
-      localStorage.setItem('lastGeneratedDate', currentDateCode);
-      localStorage.setItem('lastGeneratedNumber', parseInt(code.slice(-3), 10));
-
-      return code;
-    }
-
-    // Call the generateCode function and update the content of the span element with the generated code
-    document.getElementById('numberCode').innerText = generateCode();
-</script>
-<script>
     $(document).ready(function() {
         $('form').submit(function() {
             $('.money').each(function() {

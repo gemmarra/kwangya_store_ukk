@@ -35,53 +35,89 @@ class User extends BaseController
     }
     }
 
-    public function login()
-    {
-        $validasiForm = [
-            'email' => 'required',
-            'password' => 'required'
-        ];
+    // public function login()
+    // {
+    //     $validasiForm = [
+    //         'email' => 'required',
+    //         'password' => 'required'
+    //     ];
         
-        if ($this->validate($validasiForm)) {
-            $email = $this->request->getPost('email');
-            $password = md5($this->request->getPost('password'));
-            $whereLogin = [
-                'email' => $email,
-                'password' => $password
+    //     if ($this->validate($validasiForm)) {
+    //         $email = $this->request->getPost('email');
+    //         $password = md5($this->request->getPost('password'));
+    //         $whereLogin = [
+    //             'email' => $email,
+    //             'password' => $password
+    //         ];
+
+    //         //select * from tbl_user where email='$email' and password='$password'
+    //         $cekLogin = $this->user->where($whereLogin)->findAll();
+    //         if (count($cekLogin) == 1) {
+    //             // Check if the user is active
+    //             // if ($cekLogin[0]['status'] == 'aktif') {
+
+    //             //jika ditemukan data
+    //             // 1. buat session email, nama, level
+    //             $dataSession = [
+    //                 'email' => $cekLogin[0]['email'],
+    //                 'name' => $cekLogin[0]['name'], // Add this line to store the user's name
+    //                 'password' => $cekLogin[0]['password'],
+    //                 'role' => $cekLogin[0]['role'],
+    //                 'sudahkahLogin' => true
+    //             ];
+                
+    //             session()->set($dataSession);
+    //             return redirect()->to('/dashboard');
+    //         //     } else {
+    //         //     // User is not active, show an error message
+    //         //     return redirect()->to('/login')->with('pesan', '<p class="text-danger text-center">
+    //         //         Gagal Login! <br> Akun tidak aktif!</p>');
+    //         // }
+
+    //         } else {
+    //             //jika tidak ditemukan apapun
+    //             return redirect()->to('/login')->with('failmessage', '<p class="failmessage">
+    //             Password or email is wrong!</p>');
+    //         }
+    //     }
+    //     return view('Auth/login');
+    // }
+
+public function login()
+{
+    $validationRules = [
+        'email' => 'required',
+        'password' => 'required'
+    ];
+
+    if ($this->validate($validationRules)) {
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+
+        // Retrieve user data from database
+        $user = $this->user->where('email', $email)->first();
+
+        if ($user && password_verify($password, $user['password'])) {
+            // Authentication successful
+            $dataSession = [
+                'email' => $user['email'],
+                'name' => $user['name'],
+                'role' => $user['role'],
+                'sudahkahLogin' => true
             ];
 
-            //select * from tbl_user where email='$email' and password='$password'
-            $cekLogin = $this->user->where($whereLogin)->findAll();
-            if (count($cekLogin) == 1) {
-                // Check if the user is active
-                // if ($cekLogin[0]['status'] == 'aktif') {
-
-                //jika ditemukan data
-                // 1. buat session email, nama, level
-                $dataSession = [
-                    'email' => $cekLogin[0]['email'],
-                    'name' => $cekLogin[0]['name'], // Add this line to store the user's name
-                    'password' => $cekLogin[0]['password'],
-                    'role' => $cekLogin[0]['role'],
-                    'sudahkahLogin' => true
-                ];
-                
-                session()->set($dataSession);
-                return redirect()->to('/dashboard');
-            //     } else {
-            //     // User is not active, show an error message
-            //     return redirect()->to('/login')->with('pesan', '<p class="text-danger text-center">
-            //         Gagal Login! <br> Akun tidak aktif!</p>');
-            // }
-
-            } else {
-                //jika tidak ditemukan apapun
-                return redirect()->to('/login')->with('failmessage', '<p class="failmessage">
-                Password or email is wrong!</p>');
-            }
+            session()->set($dataSession);
+            return redirect()->to('/dashboard');
+        } else {
+            // Invalid email or password
+            return redirect()->to('/login')->with('failmessage', '<p class="failmessage">
+            Password or email is wrong!</p>');
         }
-        return view('Auth/login');
     }
+
+    return view('Auth/login');
+}
+
 
     public function logout(){
    	    session()->destroy();
@@ -265,7 +301,54 @@ class User extends BaseController
         return view('User/insert', $data);
     }
 
-    public function save()
+//     public function save()
+// {
+//     // Validation rules
+//     $rules = [
+//         'email' => 'valid_email|is_unique[user.email]',
+//         'password' => 'min_length[8]', 
+//         'confirmPassword' => 'matches[password]'
+//     ];
+
+//     $messages = [
+//         'email' => [
+//             'valid_email' => 'Email is not valid',
+//             'is_unique' => 'This email has been used'
+//         ],
+//         'password' => [
+//             'min_length' => 'Password is too short'
+//         ],
+//         'confirmPassword' => [
+//             'matches' => 'Passwords do not match'
+//         ]
+//     ];
+
+//     // Validate input
+//     if (!$this->validate($rules, $messages)) {
+//         return view('User/insert', [
+//             'page_title' => 'Add User',
+//             'validation' => $this->validator
+//         ]);
+//     }
+
+//     // Prepare data to be inserted
+//     $data = [
+//         'email' => $this->request->getPost('email'),
+//         'name' => $this->request->getPost('name'),
+//         'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+//         'role' => $this->request->getPost('role')
+//     ];
+
+//     // Insert user data
+//     $this->user->insert($data);
+
+//     // Set flash message
+//     session()->setFlashdata('message', '<p class="message">Data saved</p>');
+
+//     return redirect()->to('/user/select');
+// }
+
+public function save()
 {
     // Validation rules
     $rules = [
@@ -299,7 +382,7 @@ class User extends BaseController
     $data = [
         'email' => $this->request->getPost('email'),
         'name' => $this->request->getPost('name'),
-        'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+        'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT), // Use bcrypt explicitly
         'role' => $this->request->getPost('role')
     ];
 
