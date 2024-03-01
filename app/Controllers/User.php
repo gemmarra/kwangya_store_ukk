@@ -76,8 +76,8 @@ class User extends BaseController
 
             } else {
                 //jika tidak ditemukan apapun
-                return redirect()->to('/login')->with('pesan', '<p class="text-danger text-center">
-                Gagal Login! <br> Periksa Email atau Password!</p>');
+                return redirect()->to('/login')->with('failmessage', '<p class="failmessage">
+                Password or email is wrong!</p>');
             }
         }
         return view('Auth/login');
@@ -304,7 +304,7 @@ class User extends BaseController
     ];
 
     // Insert user data
-    $this->user->inserting($data);
+    $this->user->insert($data);
 
     // Set flash message
     session()->setFlashdata('message', '<p class="message">Data saved</p>');

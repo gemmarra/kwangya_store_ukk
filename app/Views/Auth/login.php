@@ -26,20 +26,20 @@
     <main>
         <div class="card">
             <h2>Sign in</h2>
-            <?php if(session()->getFlashdata('pesan')): ?>
-                <div><?= session()->getFlashdata('pesan') ?></div>
+            <?php if(session()->getFlashdata('failmessage')): ?>
+                <div><?= session()->getFlashdata('failmessage') ?></div>
             <?php endif; ?>
             <form action="<?=base_url('/login');?>" method="post">
                 <div class="input-group">
                     <label for="email">Email</label>
                     <div>
-                        <input type="email" name="email" required>
+                        <input type="email" name="email" required autocomplete="off">
                     </div>
                 </div>
                 <div class="input-group">
                     <label for="password">Password</label>
                     <div>
-                        <input type="password" name="password" required>
+                        <input type="password" name="password" required autocomplete="off">
                     </div>
                 </div>
                 <button type="submit">Sign in</button>

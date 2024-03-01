@@ -70,7 +70,8 @@ class Selling extends BaseController
             $dataSelling=[
                 'factur' => $this->selling->generateFactur(),                
                 'datetime'=>date('Y-m-d H:i:s'),
-                'grand_total'=>0//$this->sellingdetails->selectSum('price_total')
+                'grand_total'=>0,//$this->sellingdetails->selectSum('price_total')
+                'cashier' => session()->get('name')
             ];         
             //2 simpan ke tabel penjualan
             $this->selling->insert($dataSelling);
@@ -157,31 +158,5 @@ class Selling extends BaseController
     
             // output the generated pdf
             $dompdf->stream($filename);
-        }
-
-        public function generateInvoiceNumber()
-        {
-            // Check if last invoice number and date are stored in session
-            $lastInvoiceNumber = session()->get('last_invoice_number');
-            $lastGeneratedDate = session()->get('last_generated_date');
-    
-            // Get today's date
-            $today = date('Y-m-d');
-    
-            if ($lastGeneratedDate === $today && $lastInvoiceNumber !== null) {
-                // Increment the last generated invoice number
-                $lastInvoiceNumber++;
-                $invoiceNumber = str_pad($lastInvoiceNumber, 3, '0', STR_PAD_LEFT);
-            } else {
-                // Reset invoice number to '001'
-                $invoiceNumber = '001';
-            }
-    
-            // Store the generated invoice number and today's date in session
-            session()->set('last_invoice_number', $lastInvoiceNumber);
-            session()->set('last_generated_date', $today);
-    
-            // Pass the generated invoice number to the view
-            return view('Selling/cashier', ['invoiceNumber' => $invoiceNumber]);
         }
 }

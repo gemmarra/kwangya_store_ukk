@@ -6,7 +6,7 @@
 </div> <br/>
 <div class="report">
 <div class="add"><a href="/selling/pdfgenerate" class="btn"><i class="bi bi-download"></i> Download PDF</a></div>
-<form action="post" action="/report" class="report-form">
+<!-- <form action="post" action="/report" class="report-form">
     <div class="input-group">
             <div>
                 <select name="year-month" id="range-year-month" onchange="toggleMonthSelect()" required>
@@ -40,7 +40,7 @@
             <input type="text" name="year" required autocomplete="off" placeholder="Contoh: 2023">
             </div>
         </div>
-</form>
+</form> -->
 </div>
 <table id="myTable">
   <thead>
